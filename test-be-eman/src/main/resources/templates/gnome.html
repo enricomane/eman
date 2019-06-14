@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header" />
+
+	<div class="container">
+
+		<div class="starter-template">
+			<h1>Brastlewark</h1>
+			<br/>
+			<hr></hr>
+			<br/>	
+			<div th:fragment="tableForList">
+				<link rel="stylesheet" type="text/css"
+					th:href="@{/css/bootstrap/dataTables.bootstrap4.min.css}"
+					href="../../css/bootstrap/dataTables.bootstrap4.min.css" />
+
+
+				<div class="container">
+
+					<div th:each="item, j : ${gnomes.brastlewark}">
+
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							<div class="thumbnail" style="max-width: 500px; min-height: 850px;">
+								<br />
+								<img th:src="@{${item.thumbnail}}" alt=""
+									style="max-width: 500px; height: 200px;" />
+								<div class="caption">
+									<h4 align="center" th:text="${#strings.toUpperCase(item.name)}" style="color: red"/>
+										<span style="text-transform: uppercase;">ET&agrave;:
+											<h5 align="right" th:text="${item.age} + ' anni'" />
+										</span> <span style="text-transform: uppercase;">ALTEZZA:
+											<h5 align="right"
+												th:text="${#numbers.formatDecimal(item.height, 0, 'COMMA', 2, 'POINT')} + ' cm'" />
+										</span> <span style="text-transform: uppercase;">PESO:
+											<h5 align="right"
+												th:text="${#numbers.formatDecimal(item.height, 0, 'COMMA', 2, 'POINT')} + ' kg'" />
+										</span>
+									<span style="text-transform: uppercase;">COLORE CAPELLI:
+										<h5 align="right" th:text="${item.hair_color}" />
+									</span>
+									<div th:if="${not #lists.isEmpty(item.professions)}">
+										<span th:if="${item.professions}" style="text-transform: uppercase;">Professioni:
+											<div align="right" th:each="prof : ${item.professions}">
+												<h5 align="right" th:text="${prof}" />
+											</div>
+										</span>
+									</div>
+									<div th:if="${not #lists.isEmpty(item.friends)}">
+										<span th:if="${item.friends}" style="text-transform: uppercase;">Amici:
+											<div align="right" th:each="friend : ${item.friends}">
+												<h5 align="right" th:text="${friend}" />
+											</div>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" th:src="@{/js/bootstrap/jquery.js}"></script>
+
+		<script type="text/javascript"
+			th:src="@{/js/bootstrap/jquery.dataTables.min.js}"></script>
+
+		<script type="text/bootstrap/javascript"
+			th:src="@{/js/bootstrap/datatables.min.js}"></script>
+
+		<script type="text/javascript"
+			th:src="@{/js/bootstrap/dataTables.bootstrap4.min.js}"></script>
+
+
+		<script type="text/javascript"
+			th:src="@{/js/bootstrap/bootstrap-select.js}"></script>
+	</div>
+
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" />
+	</form>
+
+	<!-- /.container -->
+	<div th:replace="fragments/footer :: footer" />
+</body>
+</html>

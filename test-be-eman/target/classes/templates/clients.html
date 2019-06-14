@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-css" />
+
+<body>
+
+	<div th:replace="fragments/header :: header" />
+
+	<div class="container">
+
+		<div class="starter-template">
+			<h1>Lista Dei Clienti</h1>
+
+			<h1 th:inline="text">Hello
+				[[${#httpServletRequest.remoteUser}]]!</h1>
+
+			<div id="content"></div>
+
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out" />
+			</form>
+
+		</div>
+
+		<script type="text/javascript" th:src="@{/js/bootstrap/jquery.js}"></script>
+
+		<script type="text/javascript"
+			th:src="@{/js/bootstrap/jquery.dataTables.min.js}"></script>
+
+		<script type="text/bootstrap/javascript"
+			th:src="@{/js/bootstrap/datatables.min.js}"></script>
+
+		<script type="text/javascript"
+			th:src="@{/js/bootstrap/dataTables.bootstrap4.min.js}"></script>
+
+		<script type="text/javascript" th:src="@{/js/tabelle.js}"></script>
+
+		<script type="text/javascript"
+			th:src="@{/js/bootstrap/bootstrap-select.js}"></script>
+	</div>
+
+
+	<div th:replace="fragments/footer :: footer" />
+
+</body>
+</html>

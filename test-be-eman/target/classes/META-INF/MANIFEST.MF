@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: Test Enrico Manesso
+Implementation-Version: 1.0
+Built-By: Betacom
+Implementation-Vendor-Id: org.springframework.boot
+Build-Jdk: 1.8.0_171
+Implementation-URL: http://projects.spring.io/spring-boot/it.eman.test
+ /
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
